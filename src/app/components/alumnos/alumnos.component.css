@@ -1,0 +1,15 @@
+.profesional {
+  font-weight: bold;
+}
+
+.desaprobado {
+  color: red;
+}
+
+.aprobado {
+  color: blue;
+}
+
+.promocionado {
+  color: green;
+}

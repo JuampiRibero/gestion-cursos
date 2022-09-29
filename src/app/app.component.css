@@ -2,7 +2,8 @@
   display: grid;
   grid-template-areas:
     "toolbar toolbar toolbar toolbar toolbar toolbar"
-    "menu info info info info info";
+    "menu info info info info info"
+    "menu alumnos alumnos alumnos alumnos alumnos";
 }
 
 .grid-toolbar {
@@ -15,4 +16,8 @@
 
 .grid-cards {
   grid-area: info;
+}
+
+.grid-alumnos {
+  grid-area: alumnos;
 }

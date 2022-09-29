@@ -1,0 +1,19 @@
+<div class="container mt-3">
+    <h5 class="card-title text-decoration-underline mb-3">Notas de alumnos:</h5>
+    <ul>
+        <li *ngFor="let alumno of listaAlumnos" [ngClass]="alumno.esProfesional===true ? 'profesional' : ''">
+            <div [ngClass]="alumno.nota<6 ? 'desaprobado' : 'aprobado'">
+                <div [ngClass]="alumno.nota>=8 ? 'promocionado':''">
+                    {{alumno.apellido}}, {{alumno.nombre}} - {{alumno.nota}}
+                </div>
+            </div>
+        </li>
+    </ul>
+    <h5 class="card-title text-decoration-underline mb-3">Aclaraciones:</h5>
+    <ul>
+        <li>Nota menor a 6, desaprobado y se muestra en rojo</li>
+        <li>Nota mayor a 6 y menor a 8, aprobado sin promoción y se muestra en azul</li>
+        <li>Nota mayor a 8, aprobado con promoción y se muestra en verde</li>
+        <li>Si el alumno es profesional, se muestra en negrita</li>
+    </ul>
+</div>
