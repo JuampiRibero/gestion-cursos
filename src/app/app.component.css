@@ -3,6 +3,7 @@
   grid-template-areas:
     "toolbar toolbar toolbar toolbar toolbar toolbar"
     "menu info info info info info"
+    "menu form form form form form"
     "menu alumnos alumnos alumnos alumnos alumnos";
 }
 
@@ -21,3 +22,8 @@
 .grid-alumnos {
   grid-area: alumnos;
 }
+
+.grid-form {
+  grid-area: form;
+}
+
