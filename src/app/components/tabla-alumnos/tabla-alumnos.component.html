@@ -1,0 +1,47 @@
+<div class="container my-3">
+  <h1 class="text-decoration-underline" appTituloEstilo>Tabla de Alumnos</h1>
+  <div class="row"></div>
+  <mat-form-field class="col-md-6">
+    <mat-label>Filtrar por nombre de alumno</mat-label>
+    <input type="text" matInput (keyup)="filtrarAlumno($event)" />
+  </mat-form-field>
+  <div class="row">
+    <table mat-table [dataSource]="dataSource" class="col-md-12">
+      <ng-container matColumnDef="nombre">
+        <th mat-header-cell *matHeaderCellDef>Nombre</th>
+        <td mat-cell *matCellDef="let alumno">{{ alumno.nombre }}</td>
+      </ng-container>
+      <ng-container matColumnDef="apellido">
+        <th mat-header-cell *matHeaderCellDef>Apellido</th>
+        <td mat-cell *matCellDef="let alumno">{{ alumno.apellido }}</td>
+      </ng-container>
+      <ng-container matColumnDef="correo">
+        <th mat-header-cell *matHeaderCellDef>Correo Electrónico</th>
+        <td mat-cell *matCellDef="let alumno">{{ alumno.correo }}</td>
+      </ng-container>
+      <ng-container matColumnDef="nota">
+        <th mat-header-cell *matHeaderCellDef>Nota</th>
+        <td mat-cell *matCellDef="let alumno">{{ alumno.nota }}</td>
+      </ng-container>
+      <ng-container matColumnDef="esProfesional">
+        <th mat-header-cell *matHeaderCellDef>Profesional</th>
+        <td mat-cell *matCellDef="let alumno">
+          <span [appBooleanEstilo]="alumno.esProfesional">{{ alumno.esProfesional | booleanATexto: "Si": "No" | uppercase}}</span>
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="acciones">
+        <th mat-header-cell *matHeaderCellDef>Acciones</th>
+        <td mat-cell *matCellDef>
+          <button mat-icon-button color="primary">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button color="warn">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="columnas"></tr>
+      <tr mat-row *matRowDef="let row; columns: columnas"></tr>
+    </table>
+  </div>
+</div>

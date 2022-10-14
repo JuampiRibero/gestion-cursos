@@ -1,33 +1,30 @@
-<div
-  class="sidebar d-flex flex-column flex-shrink-0 p-3 text-bg-light bg-light"
-  style="width: 280px"
->
-  <hr />
-  <ul class="nav nav-pills flex-column mb-auto">
-    <li>
-      <a href="#" class="nav-link text-bg-light">
-        <svg class="bi pe-none me-2" width="16" height="16">
-          <use xlink:href="#speedometer2" />
-        </svg>
-        Cursos
-      </a>
-    </li>
-    <li>
-      <a href="#" class="nav-link text-bg-light">
-        <svg class="bi pe-none me-2" width="16" height="16">
-          <use xlink:href="#table" />
-        </svg>
-        Alumnos
-      </a>
-    </li>
-    <li>
-      <a href="#" class="nav-link text-bg-light">
-        <svg class="bi pe-none me-2" width="16" height="16">
-          <use xlink:href="#grid" />
-        </svg>
-        Profesores
-      </a>
-    </li>
-  </ul>
-  <hr />
-</div>
+<mat-toolbar color="primary">
+  <button mat-icon-button (click)="isExpanded = !isExpanded">
+    <mat-icon>expand_more</mat-icon>
+  </button>
+  <span>Gestión Cursos</span>
+</mat-toolbar>
+<mat-sidenav-container autosize>
+  <mat-sidenav #sidenav mode="side" opened="true">
+    <mat-nav-list>
+      <mat-list-item *ngIf="isExpanded">
+        <span>Cursos</span>
+      </mat-list-item>
+      <mat-list-item *ngIf="isExpanded">
+        <span>Alumnos</span>
+      </mat-list-item>
+      <mat-list-item *ngIf="isExpanded">
+        <span>Profesores</span>
+      </mat-list-item>
+    </mat-nav-list>
+  </mat-sidenav>
+  <div>
+    <app-form-alumno></app-form-alumno>
+    <mat-divider [inset]="true"></mat-divider>
+    <app-tabla-alumnos></app-tabla-alumnos>
+    <mat-divider [inset]="true"></mat-divider>
+    <app-cards-cursos></app-cards-cursos>
+    <mat-divider [inset]="true"></mat-divider>
+    <app-tabla-cursos></app-tabla-cursos>
+  </div>
+</mat-sidenav-container>

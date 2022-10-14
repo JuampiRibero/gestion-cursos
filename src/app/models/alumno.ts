@@ -1,6 +1,7 @@
 export interface Alumno {
   nombre: string;
   apellido: string;
-  esProfesional: boolean;
+  correo: string;
   nota: number;
+  esProfesional: boolean;
 }

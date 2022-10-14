@@ -1,5 +1,5 @@
 <div class="container mt-3">
-    <h5 class="card-title text-decoration-underline mb-3">Notas de alumnos:</h5>
+    <h5 class="card-title text-decoration-underline mb-3" appTituloEstilo>Notas de alumnos:</h5>
     <ul>
         <li *ngFor="let alumno of listaAlumnos" [ngClass]="alumno.esProfesional===true ? 'profesional' : ''">
             <div [ngClass]="alumno.nota<6 ? 'desaprobado' : 'aprobado'">
