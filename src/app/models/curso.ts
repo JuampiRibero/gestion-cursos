@@ -1,3 +1,5 @@
+import { Alumno } from "./alumno";
+
 export interface Curso {
     nombre: string;
     comision: string;
@@ -6,4 +8,5 @@ export interface Curso {
     fechaFin: Date;
     inscripcionAbierta: boolean;
     imagen: string;
+    alumnos: Alumno[];
   }

@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
+import { Configuracion, token } from 'src/app/config';
 import { Curso } from 'src/app/models/curso';
-import { DatosCursos } from '../../data/cursos';
 
 @Component({
   selector: 'app-cards-cursos',
@@ -9,8 +9,13 @@ import { DatosCursos } from '../../data/cursos';
 })
 export class CardsCursosComponent implements OnInit {
   filtro: string = '';
-  cursos: Curso[] = DatosCursos.cursos;
-  constructor() {}
+  cursos!: Curso[];
+  
+  constructor(
+    @Inject(token) private config: Configuracion
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.cursos = this.config.servicios.cursos.obtenerCursos();
+  }
 }

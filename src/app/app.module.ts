@@ -6,7 +6,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { CardsCursosComponent } from './components/cards-cursos/cards-cursos.component';
-import { AlumnosComponent } from './components/alumnos/alumnos.component';
 import { FormComponent } from './components/form/form.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
@@ -17,13 +16,13 @@ import { FiltroCursosPipe } from './pipes/filtro-cursos.pipe';
 import { TablaAlumnosComponent } from './components/tabla-alumnos/tabla-alumnos.component';
 import { FormAlumnoComponent } from './components/form-alumno/form-alumno.component';
 import { TituloEstiloDirective } from './directives/titulo-estilo.directive';
+import { config, token } from './config';
 
 @NgModule({
   declarations: [
     AppComponent,
     MenuComponent,
     CardsCursosComponent,
-    AlumnosComponent,
     FormComponent,
     TablaCursosComponent,
     BooleanATextoPipe,
@@ -41,7 +40,9 @@ import { TituloEstiloDirective } from './directives/titulo-estilo.directive';
     MaterialModule,
     FormsModule
   ],
-  providers: [],
+  providers: [
+    {provide: token, useValue: config}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

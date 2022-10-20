@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { Curso } from 'src/app/models/curso';
 import { MatTableDataSource } from '@angular/material/table';
-import { DatosCursos } from '../../data/cursos';
+import { Configuracion, token } from 'src/app/config';
 
 @Component({
   selector: 'app-tabla-cursos',
@@ -9,7 +9,7 @@ import { DatosCursos } from '../../data/cursos';
   styleUrls: ['./tabla-cursos.component.css'],
 })
 export class TablaCursosComponent implements OnInit {
-  cursos: Curso[] = DatosCursos.cursos;
+  cursos!: Curso[];
   columnas: string[] = [
     'nombre',
     'comision',
@@ -19,11 +19,15 @@ export class TablaCursosComponent implements OnInit {
     'inscripcionAbierta',
     'acciones',
   ];
-  dataSource: MatTableDataSource<Curso> = new MatTableDataSource<Curso>(this.cursos);
+  dataSource: MatTableDataSource<Curso> = new MatTableDataSource<Curso>(this.config.servicios.cursos.obtenerCursos());
 
-  constructor() {}
+  constructor(
+    @Inject(token) private config: Configuracion
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.cursos = this.config.servicios.cursos.obtenerCursos();
+  }
 
   filtrarCurso(event: Event){
     const valorObtenido = (event.target as HTMLInputElement).value;

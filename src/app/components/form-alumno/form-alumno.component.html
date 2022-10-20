@@ -72,6 +72,6 @@
     <div>
       <mat-checkbox [labelPosition]="labelPosition" formControlName="profesional" class="mb-2">Profesional</mat-checkbox>
     </div>
-    <button mat-raised-button [disabled]="formularioAlumno.invalid" color="primary" class="mt-2">Agregar Alumno</button>
+    <button mat-raised-button [disabled]="formularioAlumno.invalid" color="primary" class="mt-2"  (click)="agregarAlumno()">Agregar Alumno</button>
   </form>
 </div>

@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-import { DatosAlumnos } from '../../data/alumnos';
 import { Alumno } from 'src/app/models/alumno';
+import { Configuracion, token } from '../../config';
 
 @Component({
   selector: 'app-tabla-alumnos',
@@ -10,7 +10,7 @@ import { Alumno } from 'src/app/models/alumno';
 })
 export class TablaAlumnosComponent implements OnInit {
 
-  alumnos: Alumno[] = DatosAlumnos.alumnos;
+  alumnos!: Alumno[];
   columnas: string[] = [
     'nombre',
     'apellido',
@@ -19,11 +19,15 @@ export class TablaAlumnosComponent implements OnInit {
     'esProfesional',
     'acciones',
   ];
-  dataSource: MatTableDataSource<Alumno> = new MatTableDataSource<Alumno>(this.alumnos);
+  dataSource: MatTableDataSource<Alumno> = new MatTableDataSource<Alumno>(this.config.servicios.alumnos.obtenerAlumnos());
 
-  constructor() {}
+  constructor(
+    @Inject(token) private config: Configuracion
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.alumnos = this.config.servicios.alumnos.obtenerAlumnos();
+  }
 
   filtrarAlumno(event: Event){
     const valorObtenido = (event.target as HTMLInputElement).value;
@@ -32,6 +36,16 @@ export class TablaAlumnosComponent implements OnInit {
     };
     this.dataSource.filter = valorObtenido.trim().toLowerCase();
   }
+
+  // agregarAlumno(){
+  //   let alumno: Alumno = {
+  //     nombre: ,
+  //     apellido: ,
+  //     correo: ,
+  //     nota: ,
+  //     esProfesional:
+  //   }
+  // }
 
   editar(){
     console.log(this.alumnos);
