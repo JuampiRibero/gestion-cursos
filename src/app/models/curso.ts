@@ -8,5 +8,5 @@ export interface Curso {
     fechaFin: Date;
     inscripcionAbierta: boolean;
     imagen: string;
-    alumnos: Alumno[];
+    alumnos: Alumno[] | any;
   }

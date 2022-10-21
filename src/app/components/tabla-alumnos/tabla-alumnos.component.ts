@@ -23,10 +23,22 @@ export class TablaAlumnosComponent implements OnInit {
 
   constructor(
     @Inject(token) private config: Configuracion
-  ) {}
+  ) {
+    //Paso 1
+    console.log('Paso 1');
+    //Paso 2
+    this.config.servicios.alumnos.obtenerAlumnosPromise().then((valor: Alumno[]) => {
+      console.log('Paso 2: desde el Promise', valor);
+      this.alumnos = valor;
+    }).catch((error: any) => {
+      console.error(error);
+    });
+    //Paso 3
+    console.log('Paso 3');
+  }
 
   ngOnInit(): void {
-    this.alumnos = this.config.servicios.alumnos.obtenerAlumnos();
+    // this.alumnos = this.config.servicios.alumnos.obtenerAlumnos();
   }
 
   filtrarAlumno(event: Event){

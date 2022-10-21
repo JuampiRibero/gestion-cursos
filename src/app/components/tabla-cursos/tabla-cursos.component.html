@@ -1,4 +1,4 @@
-<div class="container my-3">
+<!-- <div class="container my-3">
   <h1 class="text-decoration-underline" appTituloEstilo>Tabla de Cursos</h1>
   <mat-form-field class="col-md-6">
     <mat-label>Filtrar por nombre de curso</mat-label>
@@ -51,4 +51,7 @@
       <tr mat-row *matRowDef="let row; columns: columnas"></tr>
     </table>
   </div>
-</div>
+</div> -->
+
+<button (click)="agregarCurso()">Agregar Curso</button>
+<pre>{{ cursos$ | async | json }}</pre>

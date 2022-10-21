@@ -25,6 +25,19 @@ export class AlumnoService {
 
   constructor() { }
 
+  obtenerAlumnosPromise(): Promise<Alumno[] | any>{
+    return new Promise((resolve, reject) => {
+      if(this.alumnos.length > 0){
+        resolve(this.alumnos);
+      }else{
+        reject({
+          codigo: 0,
+          mensaje: 'No hay alumnos en este momento'
+        })
+      }
+    })
+  }
+
   obtenerAlumnos(): Alumno[]{
     return this.alumnos;
   }
