@@ -1,7 +1,8 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { Alumno } from 'src/app/models/alumno';
 import { Configuracion, token } from '../../config';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-tabla-alumnos',
@@ -11,6 +12,8 @@ import { Configuracion, token } from '../../config';
 export class TablaAlumnosComponent implements OnInit {
 
   alumnos!: Alumno[];
+  alumnos$!: Observable<Alumno[]>;
+  suscripcion: any;
   columnas: string[] = [
     'nombre',
     'apellido',
@@ -27,18 +30,26 @@ export class TablaAlumnosComponent implements OnInit {
     //Paso 1
     console.log('Paso 1');
     //Paso 2
-    this.config.servicios.alumnos.obtenerAlumnosPromise().then((valor: Alumno[]) => {
-      console.log('Paso 2: desde el Promise', valor);
-      this.alumnos = valor;
-    }).catch((error: any) => {
-      console.error(error);
+    this.suscripcion = this.config.servicios.alumnos.obtenerAlumnosObservable().subscribe({
+      next: (alumnos: Alumno[]) => {
+        this.alumnos = alumnos;
+        console.log('Paso 2: desde el Observable', alumnos);
+      },
+      error: (error) => {
+        console.error(error);
+      }
     });
+    this.alumnos$ = this.config.servicios.alumnos.obtenerAlumnosObservable();
     //Paso 3
     console.log('Paso 3');
   }
 
   ngOnInit(): void {
-    // this.alumnos = this.config.servicios.alumnos.obtenerAlumnos();
+    this.alumnos = this.config.servicios.alumnos.obtenerAlumnos();
+  }
+
+  ngOnDestroy(){
+    this.suscripcion.unsubscribe();
   }
 
   filtrarAlumno(event: Event){
@@ -49,15 +60,16 @@ export class TablaAlumnosComponent implements OnInit {
     this.dataSource.filter = valorObtenido.trim().toLowerCase();
   }
 
-  // agregarAlumno(){
-  //   let alumno: Alumno = {
-  //     nombre: ,
-  //     apellido: ,
-  //     correo: ,
-  //     nota: ,
-  //     esProfesional:
-  //   }
-  // }
+  agregarAlumno(){
+    let alumno: Alumno = {
+      nombre: 'Pepe',
+      apellido: 'Gonzales',
+      correo: 'pg@gmail.com',
+      nota: 7,
+      esProfesional: true
+    }
+    this.config.servicios.alumnos.agregarAlumno(alumno);
+  }
 
   editar(){
     console.log(this.alumnos);

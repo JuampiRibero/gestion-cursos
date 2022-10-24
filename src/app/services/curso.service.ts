@@ -17,7 +17,7 @@ export class CursoService {
       inscripcionAbierta: true,
       imagen:
         'https://img.freepik.com/foto-gratis/encendido-computadora-portatil-gris_400718-47.jpg?w=1060&t=st=1663708656~exp=1663709256~hmac=41ed7dd4523308f9f9c145e5fe12aecfbd21619ad28f2c1988b896458dcda35a',
-      alumnos: this.alumnoService.obtenerAlumnosPromise(),
+      alumnos: this.alumnoService.obtenerAlumnosObservable(),
     },
     {
       nombre: 'React Js',
@@ -28,7 +28,7 @@ export class CursoService {
       inscripcionAbierta: false,
       imagen:
         'https://img.freepik.com/foto-gratis/encendido-computadora-portatil-gris_400718-47.jpg?w=1060&t=st=1663708656~exp=1663709256~hmac=41ed7dd4523308f9f9c145e5fe12aecfbd21619ad28f2c1988b896458dcda35a',
-      alumnos: this.alumnoService.obtenerAlumnosPromise(),
+      alumnos: this.alumnoService.obtenerAlumnosObservable(),
     },
     {
       nombre: 'JavaScript',
@@ -39,7 +39,7 @@ export class CursoService {
       inscripcionAbierta: false,
       imagen:
         'https://img.freepik.com/foto-gratis/encendido-computadora-portatil-gris_400718-47.jpg?w=1060&t=st=1663708656~exp=1663709256~hmac=41ed7dd4523308f9f9c145e5fe12aecfbd21619ad28f2c1988b896458dcda35a',
-      alumnos: this.alumnoService.obtenerAlumnosPromise(),
+      alumnos: this.alumnoService.obtenerAlumnosObservable(),
     },
   ];
   cursos$: Observable<Curso[]>;
@@ -50,26 +50,10 @@ export class CursoService {
 
     this.cursos$ = new Observable<Curso[]>((suscriptor) => {
       suscriptor.next(this.cursos);
-
-      setTimeout(() => {
-        this.cursos.push({
-          nombre: 'React Js',
-          comision: '22430',
-          profesor: 'Angeles',
-          fechaInicio: new Date(2021, 11, 27),
-          fechaFin: new Date(2022, 1, 22),
-          inscripcionAbierta: false,
-          imagen:
-            'https://img.freepik.com/foto-gratis/encendido-computadora-portatil-gris_400718-47.jpg?w=1060&t=st=1663708656~exp=1663709256~hmac=41ed7dd4523308f9f9c145e5fe12aecfbd21619ad28f2c1988b896458dcda35a',
-          alumnos: this.alumnoService.obtenerAlumnosPromise(),
-        });
-        suscriptor.next(this.cursos);
-      }, 2000);
     });
   }
 
   obtenerCursosObservable() {
-    // return of(this.cursos);
     // return this.cursos$;
     return this.cursosSubject.asObservable();
   }
@@ -80,6 +64,6 @@ export class CursoService {
 
   agregarCurso(curso: Curso) {
     this.cursos.push(curso);
-        this.cursosSubject.next(this.cursos);
+    this.cursosSubject.next(this.cursos);
   }
 }

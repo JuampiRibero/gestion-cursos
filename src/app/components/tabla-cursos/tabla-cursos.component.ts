@@ -38,7 +38,7 @@ export class TablaCursosComponent implements OnInit, OnDestroy {
       error: (error) => {
         console.error(error);
       }
-    }).unsubscribe();
+    });
     this.cursos$ = this.config.servicios.cursos.obtenerCursosObservable();
     //Paso 3
     console.log('Paso 3');
@@ -78,7 +78,7 @@ export class TablaCursosComponent implements OnInit, OnDestroy {
       inscripcionAbierta: false,
       imagen:
         'https://img.freepik.com/foto-gratis/encendido-computadora-portatil-gris_400718-47.jpg?w=1060&t=st=1663708656~exp=1663709256~hmac=41ed7dd4523308f9f9c145e5fe12aecfbd21619ad28f2c1988b896458dcda35a',
-      alumnos: this.config.servicios.alumnos.obtenerAlumnosPromise(),
+      alumnos: this.config.servicios.alumnos.obtenerAlumnosObservable(),
       }
     this.config.servicios.cursos.agregarCurso(curso);
   }
