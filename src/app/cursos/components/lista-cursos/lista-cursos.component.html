@@ -19,7 +19,7 @@
           <p>Dictado por {{ curso.profesor }}</p>
           <p>Inicia el {{ curso.fechaInicio | date: "dd/MM/YYYY" }}</p>
           <p>Finaliza el {{ curso.fechaFin | date: "dd/MM/YYYY" }}</p>
-          <p>Numero de alumnos: {{ curso.alumnos.length }}</p>
+          <!-- <p>Numero de alumnos: {{ curso.alumnos.length }}</p> -->
           <p  [appBooleanEstilo]="curso.inscripcionAbierta">{{ curso.inscripcionAbierta | booleanATexto: "Inscripcion Abierta": "Inscripcion Cerrada" | uppercase}}</p>
         </mat-card-content>
         <mat-card-actions align="end">
