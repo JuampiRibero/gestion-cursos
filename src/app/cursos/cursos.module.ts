@@ -6,7 +6,6 @@ import { ListaCursosComponent } from './components/lista-cursos/lista-cursos.com
 import { AgregarCursoComponent } from './components/agregar-curso/agregar-curso.component';
 import { EditarCursoComponent } from './components/editar-curso/editar-curso.component';
 import { EliminarCursoComponent } from './components/eliminar-curso/eliminar-curso.component';
-import { MaterialModule } from '../material.module';
 import { BooleanEstiloDirective } from './directives/boolean-estilo.directive';
 import { BooleanATextoPipe } from './pipes/boolean-a-texto.pipe';
 import { FiltroCursosPipe } from './pipes/filtro-cursos.pipe';
@@ -19,7 +18,10 @@ import { SharedModule } from '../shared/shared.module';
     ListaCursosComponent,
     AgregarCursoComponent,
     EditarCursoComponent,
-    EliminarCursoComponent
+    EliminarCursoComponent,
+    BooleanEstiloDirective,
+    BooleanATextoPipe,
+    FiltroCursosPipe
   ],
   imports: [
     CommonModule,

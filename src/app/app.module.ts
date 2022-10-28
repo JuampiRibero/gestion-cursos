@@ -11,7 +11,6 @@ import { BooleanEstiloDirective } from './directives/boolean-estilo.directive';
 import { FiltroCursosPipe } from './pipes/filtro-cursos.pipe';
 import { TablaAlumnosComponent } from './components/tabla-alumnos/tabla-alumnos.component';
 import { FormAlumnoComponent } from './components/form-alumno/form-alumno.component';
-import { TituloEstiloDirective } from './directives/titulo-estilo.directive';
 import { config, token } from './config';
 import { AutenticacionModule } from './autenticacion/autenticacion.module';
 import { CursosModule } from './cursos/cursos.module';
@@ -28,14 +27,12 @@ import { SharedModule } from './shared/shared.module';
     BooleanEstiloDirective,
     FiltroCursosPipe,
     TablaAlumnosComponent,
-    FormAlumnoComponent,
-    TituloEstiloDirective,
-    
+    FormAlumnoComponent    
   ],
   imports: [
     // CommonModule,
     BrowserModule,
-    // AutenticacionModule,
+    AutenticacionModule,
     CursosModule,
     AppRoutingModule,
     BrowserAnimationsModule,
