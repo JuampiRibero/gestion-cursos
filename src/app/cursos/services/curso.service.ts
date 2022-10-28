@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, map, Observable } from 'rxjs';
+import { BehaviorSubject, filter, map, Observable, Subject } from 'rxjs';
 import { Curso } from '../../models/curso';
 import { AlumnoService } from '../../services/alumno.service';
 
@@ -43,15 +43,10 @@ export class CursoService {
       alumnos: this.alumnoService.obtenerAlumnosObservable(),
     },
   ];
-  // cursos$: Observable<Curso[]>;
   private cursosSubject: BehaviorSubject<Curso[]>;
 
   constructor(private alumnoService: AlumnoService) {
     this.cursosSubject = new BehaviorSubject<Curso[]>(this.cursos);
-
-    // this.cursos$ = new Observable<Curso[]>((suscriptor) => {
-    //   suscriptor.next(this.cursos);
-    // });
   }
 
   obtenerCursos(): Observable<Curso[]> {
@@ -69,7 +64,23 @@ export class CursoService {
     this.cursosSubject.next(this.cursos);
   }
 
-  editarCurso(curso: Curso) {}
+  editarCurso(curso: Curso){
+    let indice = this.cursos.findIndex((c: Curso) => c.id === curso.id);
 
-  eliminarCurso(id: number) {}
+    if(indice > -1){
+      this.cursos[indice] = curso;
+    }
+
+    this.cursosSubject.next(this.cursos);
+  }
+
+  eliminarCurso(id: number){
+    let indice = this.cursos.findIndex((c: Curso) => c.id === id);
+
+    if(indice > -1){
+      this.cursos.splice(indice, 1);
+    }
+
+    this.cursosSubject.next(this.cursos);
+  }
 }

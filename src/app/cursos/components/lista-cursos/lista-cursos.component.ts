@@ -22,11 +22,11 @@ export class ListaCursosComponent implements OnInit {
     this.cursos$ = this.config.servicios.cursos.obtenerCursos();
   }
 
-  eliminarCurso(id: number) {
-    this.config.servicios.cursos.eliminarCurso(id);
-  }
-
   editarCurso(curso: Curso) {
     this.router.navigate(['cursos/editar', curso]);
+  }
+
+  eliminarCurso(id: number) {
+    this.config.servicios.cursos.eliminarCurso(id);
   }
 }
