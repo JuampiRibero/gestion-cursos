@@ -49,7 +49,7 @@ export class CursoService {
     this.cursosSubject = new BehaviorSubject<Curso[]>(this.cursos);
   }
 
-  obtenerCursos(): Observable<Curso[]> {
+  obtenerCursos(): Observable<Curso[] | any> {
     return this.cursosSubject.asObservable();
   }
 
