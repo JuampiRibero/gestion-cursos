@@ -22,7 +22,7 @@ export class TablaCursosComponent implements OnInit, OnDestroy {
     'inscripcionAbierta',
     'acciones',
   ];
-  dataSource: MatTableDataSource<Curso> = new MatTableDataSource<Curso>(this.config.servicios.cursos.obtenerCursos());
+  dataSource: MatTableDataSource<Curso> = new MatTableDataSource<Curso>();
 
   constructor(
     @Inject(token) private config: Configuracion
@@ -30,7 +30,7 @@ export class TablaCursosComponent implements OnInit, OnDestroy {
     //Paso 1
     console.log('Paso 1');
     //Paso 2
-    this.suscripcion = this.config.servicios.cursos.obtenerCursosObservable().subscribe({
+    this.suscripcion = this.config.servicios.cursos.obtenerCursos().subscribe({
       next: (cursos: Curso[]) => {
         this.cursos = cursos;
         console.log('Paso 2: desde el Observable', cursos);
@@ -39,13 +39,13 @@ export class TablaCursosComponent implements OnInit, OnDestroy {
         console.error(error);
       }
     });
-    this.cursos$ = this.config.servicios.cursos.obtenerCursosObservable();
+    this.cursos$ = this.config.servicios.cursos.obtenerCursos();
     //Paso 3
     console.log('Paso 3');
   }
 
   ngOnInit(): void {
-    this.cursos = this.config.servicios.cursos.obtenerCursos();
+    this.cursos$ = this.config.servicios.cursos.obtenerCursos();
   }
 
   ngOnDestroy(){
@@ -70,6 +70,7 @@ export class TablaCursosComponent implements OnInit, OnDestroy {
 
   agregarCurso(){
     let curso: Curso = {
+      id: 4,
       nombre: 'React Js',
       comision: '22430',
       profesor: 'Angeles',

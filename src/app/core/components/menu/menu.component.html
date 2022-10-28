@@ -2,29 +2,36 @@
   <button mat-icon-button (click)="isExpanded = !isExpanded">
     <mat-icon>expand_more</mat-icon>
   </button>
-  <span>Gestión Cursos</span>
+  <a routerLink="" class="toolbar-title text-decoration-none">Gestión Cursos</a>
 </mat-toolbar>
 <mat-sidenav-container autosize>
   <mat-sidenav #sidenav mode="side" opened="true">
     <mat-nav-list>
       <mat-list-item *ngIf="isExpanded">
-        <span>Cursos</span>
+        <a routerLink="">Inicio</a>
       </mat-list-item>
       <mat-list-item *ngIf="isExpanded">
-        <span>Alumnos</span>
+        <a routerLink="cursos/listar">Lista Cursos</a>
       </mat-list-item>
       <mat-list-item *ngIf="isExpanded">
-        <span>Profesores</span>
+        <a routerLink="cursos/agregar">Agregar Curso</a>
+      </mat-list-item>
+      <mat-list-item *ngIf="isExpanded">
+        <a routerLink="alumnos/listar">Alumnos</a>
+      </mat-list-item>
+      <mat-list-item *ngIf="isExpanded">
+        <a routerLink="contacto">Contacto</a>
       </mat-list-item>
     </mat-nav-list>
   </mat-sidenav>
-  <div>
-    <app-form-alumno></app-form-alumno>
+  <div class="vh-100"> 
+    <router-outlet></router-outlet>
+    <!-- <app-form-alumno></app-form-alumno>
     <mat-divider [inset]="true"></mat-divider>
     <app-tabla-alumnos></app-tabla-alumnos>
     <mat-divider [inset]="true"></mat-divider>
     <app-cards-cursos></app-cards-cursos>
     <mat-divider [inset]="true"></mat-divider>
-    <app-tabla-cursos></app-tabla-cursos>
+    <app-tabla-cursos></app-tabla-cursos> -->
   </div>
 </mat-sidenav-container>

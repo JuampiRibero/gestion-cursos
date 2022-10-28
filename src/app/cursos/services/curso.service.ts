@@ -1,14 +1,13 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, of, Subject } from 'rxjs';
-import { Curso } from '../models/curso';
-import { AlumnoService } from './alumno.service';
+import { BehaviorSubject, map, Observable } from 'rxjs';
+import { Curso } from '../../models/curso';
+import { AlumnoService } from '../../services/alumno.service';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class CursoService {
   private cursos: Curso[] = [
     {
+      id: 1,
       nombre: 'Angular',
       comision: '32320',
       profesor: 'Abner',
@@ -20,6 +19,7 @@ export class CursoService {
       alumnos: this.alumnoService.obtenerAlumnosObservable(),
     },
     {
+      id: 2,
       nombre: 'React Js',
       comision: '22430',
       profesor: 'Angeles',
@@ -31,6 +31,7 @@ export class CursoService {
       alumnos: this.alumnoService.obtenerAlumnosObservable(),
     },
     {
+      id: 3,
       nombre: 'JavaScript',
       comision: '23175',
       profesor: 'Tomas',
@@ -42,28 +43,33 @@ export class CursoService {
       alumnos: this.alumnoService.obtenerAlumnosObservable(),
     },
   ];
-  cursos$: Observable<Curso[]>;
-  cursosSubject: BehaviorSubject<Curso[]>;
+  // cursos$: Observable<Curso[]>;
+  private cursosSubject: BehaviorSubject<Curso[]>;
 
   constructor(private alumnoService: AlumnoService) {
     this.cursosSubject = new BehaviorSubject<Curso[]>(this.cursos);
 
-    this.cursos$ = new Observable<Curso[]>((suscriptor) => {
-      suscriptor.next(this.cursos);
-    });
+    // this.cursos$ = new Observable<Curso[]>((suscriptor) => {
+    //   suscriptor.next(this.cursos);
+    // });
   }
 
-  obtenerCursosObservable() {
-    // return this.cursos$;
+  obtenerCursos(): Observable<Curso[]> {
     return this.cursosSubject.asObservable();
   }
 
-  obtenerCursos(): Curso[] {
-    return this.cursos;
+  obtenerCurso(id: number): Observable<Curso[]> {
+    return this.obtenerCursos().pipe(
+      map((cursos: Curso[]) => cursos.filter((curso: Curso) => curso.id === id))
+    );
   }
 
   agregarCurso(curso: Curso) {
     this.cursos.push(curso);
     this.cursosSubject.next(this.cursos);
   }
+
+  editarCurso(curso: Curso) {}
+
+  eliminarCurso(id: number) {}
 }

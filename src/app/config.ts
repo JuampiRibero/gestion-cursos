@@ -1,4 +1,4 @@
-import { CursoService } from './services/curso.service';
+import { CursoService } from './cursos/services/curso.service';
 import { AlumnoService } from './services/alumno.service';
 import { InjectionToken } from '@angular/core';
 

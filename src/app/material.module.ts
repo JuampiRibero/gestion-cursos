@@ -11,6 +11,9 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   imports: [
@@ -25,7 +28,9 @@ import { MatListModule } from '@angular/material/list';
     MatCheckboxModule,
     MatDividerModule,
     MatListModule,
-    
+    MatDatepickerModule,
+    MatSlideToggleModule,
+    MatNativeDateModule,
   ],
   exports: [
     MatTableModule,
@@ -39,6 +44,9 @@ import { MatListModule } from '@angular/material/list';
     MatCheckboxModule,
     MatDividerModule,
     MatListModule,
+    MatDatepickerModule,
+    MatSlideToggleModule,
+    MatNativeDateModule,
   ],
 })
 export class MaterialModule {}
