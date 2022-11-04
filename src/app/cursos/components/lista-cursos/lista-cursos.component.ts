@@ -1,8 +1,8 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Configuracion, token } from 'src/app/config';
 import { Curso } from 'src/app/models/curso';
 import { Router } from '@angular/router';
+import { CursoService } from '../../../cursos/services/curso.service';
 
 @Component({
   selector: 'app-lista-cursos',
@@ -14,19 +14,20 @@ export class ListaCursosComponent implements OnInit {
   cursos$!: Observable<Curso[]>;
 
   constructor(
-    @Inject(token) private config: Configuracion,
+    private cursoService: CursoService,
     private router: Router
   ) {}
 
   ngOnInit(): void {
-    this.cursos$ = this.config.servicios.cursos.obtenerCursos();
+    this.cursos$ = this.cursoService.obtenerCursos();
   }
 
   editarCurso(curso: Curso) {
     this.router.navigate(['cursos/editar', curso]);
+    this.cursos$ = this.cursoService.obtenerCursos();
   }
 
   eliminarCurso(id: number) {
-    this.config.servicios.cursos.eliminarCurso(id);
+    this.cursoService.eliminarCurso(id);
   }
 }

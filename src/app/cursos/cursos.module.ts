@@ -11,6 +11,7 @@ import { FiltroCursosPipe } from './pipes/filtro-cursos.pipe';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CursoService } from './services/curso.service';
 import { SharedModule } from '../shared/shared.module';
+import { DetalleCursoComponent } from './components/detalle-curso/detalle-curso.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { SharedModule } from '../shared/shared.module';
     EditarCursoComponent,
     BooleanEstiloDirective,
     BooleanATextoPipe,
-    FiltroCursosPipe
+    FiltroCursosPipe,
+    DetalleCursoComponent
   ],
   imports: [
     CommonModule,

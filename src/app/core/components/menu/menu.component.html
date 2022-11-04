@@ -1,37 +1,46 @@
-<mat-toolbar color="primary">
-  <button mat-icon-button (click)="isExpanded = !isExpanded">
-    <mat-icon>expand_more</mat-icon>
-  </button>
-  <a routerLink="" class="toolbar-title text-decoration-none">Gestión Cursos</a>
-</mat-toolbar>
-<mat-sidenav-container autosize>
-  <mat-sidenav #sidenav mode="side" opened="true">
-    <mat-nav-list>
-      <mat-list-item *ngIf="isExpanded">
-        <a routerLink="">Inicio</a>
-      </mat-list-item>
-      <mat-list-item *ngIf="isExpanded">
-        <a routerLink="cursos/listar">Lista Cursos</a>
-      </mat-list-item>
-      <mat-list-item *ngIf="isExpanded">
-        <a routerLink="cursos/agregar">Agregar Curso</a>
-      </mat-list-item>
-      <mat-list-item *ngIf="isExpanded">
-        <a routerLink="alumnos/listar">Alumnos</a>
-      </mat-list-item>
-      <mat-list-item *ngIf="isExpanded">
-        <a routerLink="contacto">Contacto</a>
-      </mat-list-item>
-    </mat-nav-list>
-  </mat-sidenav>
-  <div class="vh-100"> 
-    <router-outlet></router-outlet>
-    <!-- <app-form-alumno></app-form-alumno>
-    <mat-divider [inset]="true"></mat-divider>
-    <app-tabla-alumnos></app-tabla-alumnos>
-    <mat-divider [inset]="true"></mat-divider>
-    <app-cards-cursos></app-cards-cursos>
-    <mat-divider [inset]="true"></mat-divider>
-    <app-tabla-cursos></app-tabla-cursos> -->
+<ng-container *ngIf="sesion$ | async as sesion">
+  <div *ngIf="sesion.sesionActiva">
+    <mat-toolbar color="primary">
+      <button mat-icon-button (click)="isExpanded = !isExpanded">
+        <mat-icon>expand_more</mat-icon>
+      </button>
+      <a routerLink="" class="toolbar-title text-decoration-none me-1">Gestión Cursos</a>
+      <h3>{{ sesion.usuarioActivo?.usuario }}</h3>
+    </mat-toolbar>
   </div>
-</mat-sidenav-container>
+  <mat-sidenav-container autosize>
+    <mat-sidenav #sidenav mode="side" opened="true">
+      <mat-nav-list>
+        <mat-list-item *ngIf="isExpanded">
+          <a routerLink="">Inicio</a>
+        </mat-list-item>
+        <mat-list-item *ngIf="isExpanded">
+          <a routerLink="autenticacion/login">Login</a>
+        </mat-list-item>
+        <mat-list-item *ngIf="isExpanded">
+          <a routerLink="cursos/listar">Lista Cursos</a>
+        </mat-list-item>
+        <mat-list-item *ngIf="isExpanded">
+          <!-- <a routerLink="cursos/agregar" *ngIf="sesion.usuarioActivo?.admin">Agregar Curso</a> -->
+          <a routerLink="cursos/agregar">Agregar Curso</a>
+        </mat-list-item>
+        <mat-list-item *ngIf="isExpanded">
+          <a routerLink="alumnos/listar">Alumnos</a>
+        </mat-list-item>
+        <mat-list-item *ngIf="isExpanded">
+          <a routerLink="contacto">Contacto</a>
+        </mat-list-item>
+      </mat-nav-list>
+    </mat-sidenav>
+    <div class="vh-100"> 
+      <router-outlet></router-outlet>
+      <!-- <app-form-alumno></app-form-alumno>
+      <mat-divider [inset]="true"></mat-divider>
+      <app-tabla-alumnos></app-tabla-alumnos>
+      <mat-divider [inset]="true"></mat-divider>
+      <app-cards-cursos></app-cards-cursos>
+      <mat-divider [inset]="true"></mat-divider>
+      <app-tabla-cursos></app-tabla-cursos> -->
+    </div>
+  </mat-sidenav-container>
+</ng-container>

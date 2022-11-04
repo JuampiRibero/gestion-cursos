@@ -1,5 +1,49 @@
 <div class="container my-3">
-    <h1 class="text-decoration-none" appTituloEstilo>¡Login!</h1>
-    <span>Proximamente encontrarás contenido en esta sección</span>
+  <h1 class="text-decoration-underline" appTituloEstilo>¡Login!</h1>
+  <form [formGroup]="formularioLogin" (ngSubmit)="login()">
+    <div class="row">
+      <div class="col-md-4">
+        <mat-form-field appearance="outline" class="fill">
+          <mat-label>Usuario:</mat-label>
+          <input
+            matInput
+            formControlName="usuario"
+            placeholder="Ingrese nombre de usuario..."
+          />
+          <mat-hint>
+            <p
+              *ngIf="formularioLogin.get('usuario')?.touched && formularioLogin.get('usuario')?.errors?.['required']"
+            >
+              El nombre de usuario es requerido
+            </p>
+          </mat-hint>
+        </mat-form-field>
+      </div>
+      <div class="col-md-4">
+        <mat-form-field appearance="outline" class="fill">
+          <mat-label>Contrasena:</mat-label>
+          <input
+            matInput
+            formControlName="contrasena"
+            placeholder="Ingrese contrasena de curso..."
+          />
+          <mat-hint>
+            <p
+              *ngIf="formularioLogin.get('contrasena')?.touched && formularioLogin.get('contrasena')?.errors?.['required']"
+            >
+              La contrasena es requerida
+            </p>
+          </mat-hint>
+        </mat-form-field>
+      </div>
+      <div class="col-md-2">
+        <mat-slide-toggle formControlName="admin" color="primary"
+        >Es admin</mat-slide-toggle
+      >
+      </div>
+      <div class="col-md-2">
+        <button mat-raised-button type="submit" color="primary">Entrar</button>
+      </div>
+    </div>
+  </form>
 </div>
-

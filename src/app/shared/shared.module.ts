@@ -5,6 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BooleanEstiloDirective } from '../directives/boolean-estilo.directive';
 import { BooleanATextoPipe } from '../pipes/boolean-a-texto.pipe';
 import { FiltroCursosPipe } from '../pipes/filtro-cursos.pipe';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [],
@@ -15,7 +16,8 @@ import { FiltroCursosPipe } from '../pipes/filtro-cursos.pipe';
     FormsModule,
     // BooleanEstiloDirective,
     // BooleanATextoPipe,
-    // FiltroCursosPipe
+    // FiltroCursosPipe,
+    HttpClientModule
   ],
   exports: [
     MaterialModule,
@@ -23,7 +25,8 @@ import { FiltroCursosPipe } from '../pipes/filtro-cursos.pipe';
     FormsModule,
     // BooleanEstiloDirective,
     // BooleanATextoPipe,
-    // FiltroCursosPipe
+    // FiltroCursosPipe,
+    HttpClientModule
   ]
 })
 export class SharedModule { }

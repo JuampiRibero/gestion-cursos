@@ -1,8 +1,8 @@
 import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { Alumno } from 'src/app/models/alumno';
-import { Configuracion, token } from '../../config';
 import { Observable } from 'rxjs';
+import { AlumnoService } from '../../services/alumno.service';
 
 @Component({
   selector: 'app-tabla-alumnos',
@@ -22,15 +22,15 @@ export class TablaAlumnosComponent implements OnInit {
     'esProfesional',
     'acciones',
   ];
-  dataSource: MatTableDataSource<Alumno> = new MatTableDataSource<Alumno>(this.config.servicios.alumnos.obtenerAlumnos());
+  dataSource: MatTableDataSource<Alumno> = new MatTableDataSource<Alumno>(this.alumnoService.obtenerAlumnos());
 
   constructor(
-    @Inject(token) private config: Configuracion
+    private alumnoService: AlumnoService
   ) {
     //Paso 1
     console.log('Paso 1');
     //Paso 2
-    this.suscripcion = this.config.servicios.alumnos.obtenerAlumnosObservable().subscribe({
+    this.suscripcion = this.alumnoService.obtenerAlumnosObservable().subscribe({
       next: (alumnos: Alumno[]) => {
         this.alumnos = alumnos;
         console.log('Paso 2: desde el Observable', alumnos);
@@ -39,13 +39,13 @@ export class TablaAlumnosComponent implements OnInit {
         console.error(error);
       }
     });
-    this.alumnos$ = this.config.servicios.alumnos.obtenerAlumnosObservable();
+    this.alumnos$ = this.alumnoService.obtenerAlumnosObservable();
     //Paso 3
     console.log('Paso 3');
   }
 
   ngOnInit(): void {
-    this.alumnos = this.config.servicios.alumnos.obtenerAlumnos();
+    this.alumnos = this.alumnoService.obtenerAlumnos();
   }
 
   ngOnDestroy(){
@@ -68,7 +68,7 @@ export class TablaAlumnosComponent implements OnInit {
       nota: 7,
       esProfesional: true
     }
-    this.config.servicios.alumnos.agregarAlumno(alumno);
+    this.alumnoService.agregarAlumno(alumno);
   }
 
   editar(){

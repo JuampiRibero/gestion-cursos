@@ -5,9 +5,10 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { Configuracion, token } from 'src/app/config';
 import { Curso } from 'src/app/models/curso';
 import { Router } from '@angular/router';
+import { CursoService } from '../../services/curso.service';
+import { AlumnoService } from '../../../services/alumno.service';
 
 @Component({
   selector: 'app-agregar-curso',
@@ -16,9 +17,8 @@ import { Router } from '@angular/router';
 })
 export class AgregarCursoComponent implements OnInit {
   formularioCurso: FormGroup;
-  alumnoService: any;
 
-  constructor(@Inject(token) private config: Configuracion, private router: Router, private fb: FormBuilder) {
+  constructor(private cursoService: CursoService, private alumnoService: AlumnoService, private router: Router, private fb: FormBuilder) {
     this.formularioCurso = fb.group({
       nombre: new FormControl('', [Validators.required]),
       comision: new FormControl('', [Validators.required]),
@@ -42,11 +42,11 @@ export class AgregarCursoComponent implements OnInit {
       profesor: this.formularioCurso.value.profesor,
       inscripcionAbierta: this.formularioCurso.value.inscripcionAbierta,
       imagen: 'https://img.freepik.com/foto-gratis/encendido-computadora-portatil-gris_400718-47.jpg?w=1060&t=st=1663708656~exp=1663709256~hmac=41ed7dd4523308f9f9c145e5fe12aecfbd21619ad28f2c1988b896458dcda35a',
-      alumnos: this.config.servicios.alumnos.obtenerAlumnosObservable(),
+      alumnos: this.alumnoService.obtenerAlumnosObservable(),
     };
     console.log(curso);
     this.formularioCurso.addControl('control1', new FormControl('', []));
-    this.config.servicios.cursos.agregarCurso(curso);
+    this.cursoService.agregarCurso(curso);
     this.router.navigate(['cursos/listar']);
   }
 

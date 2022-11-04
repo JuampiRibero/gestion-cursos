@@ -5,13 +5,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormComponent } from './components/form/form.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { TablaCursosComponent } from './components/tabla-cursos/tabla-cursos.component';
 import { BooleanATextoPipe } from './pipes/boolean-a-texto.pipe';
 import { BooleanEstiloDirective } from './directives/boolean-estilo.directive';
 import { FiltroCursosPipe } from './pipes/filtro-cursos.pipe';
 import { TablaAlumnosComponent } from './components/tabla-alumnos/tabla-alumnos.component';
 import { FormAlumnoComponent } from './components/form-alumno/form-alumno.component';
-import { config, token } from './config';
+// import { config, token } from './config';
 import { AutenticacionModule } from './autenticacion/autenticacion.module';
 import { CursosModule } from './cursos/cursos.module';
 import { CoreModule } from './core/core.module';
@@ -22,7 +21,6 @@ import { SharedModule } from './shared/shared.module';
   declarations: [
     AppComponent,
     FormComponent,
-    TablaCursosComponent,
     BooleanATextoPipe,
     BooleanEstiloDirective,
     FiltroCursosPipe,
@@ -32,15 +30,15 @@ import { SharedModule } from './shared/shared.module';
   imports: [
     // CommonModule,
     BrowserModule,
-    AutenticacionModule,
-    CursosModule,
+    // AutenticacionModule,
+    // CursosModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     CoreModule,
     SharedModule
   ],
   providers: [
-    {provide: token, useValue: config}
+    // {provide: token, useValue: config}
   ],
   bootstrap: [AppComponent]
 })

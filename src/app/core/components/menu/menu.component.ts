@@ -1,5 +1,8 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Inject, OnInit, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
+import { Observable } from 'rxjs';
+import { Sesion } from 'src/app/models/sesion';
+import { SesionService } from '../../services/sesion.service';
 
 @Component({
   selector: 'app-menu',
@@ -9,8 +12,11 @@ import { MatSidenav } from '@angular/material/sidenav';
 export class MenuComponent implements OnInit {
   @ViewChild('sidenav') sidenav!: MatSidenav;
   isExpanded = false;
+  sesion$!: Observable<Sesion>;
 
-  constructor() {}
+  constructor(private sesionService: SesionService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.sesion$ = this.sesionService.obtenerSesion();
+  }
 }
