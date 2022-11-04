@@ -1,9 +1,8 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, filter, map, Observable, Subject } from 'rxjs';
+import { BehaviorSubject, catchError, filter, map, Observable, Subject, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Curso } from '../../models/curso';
-import { AlumnoService } from '../../services/alumno.service';
 
 @Injectable()
 export class CursoService {
@@ -15,7 +14,9 @@ export class CursoService {
         'content-type': 'application/json',
         'encoding': 'UTF-8'
       })
-    })
+    }).pipe(
+      catchError(this.manejarError)
+    )
   }
 
   obtenerCurso(id: number): Observable<Curso> {
@@ -24,7 +25,9 @@ export class CursoService {
         'content-type': 'application/json',
         'encoding': 'UTF-8'
       })
-    });
+    }).pipe(
+      catchError(this.manejarError)
+    )
   }
 
   agregarCurso(curso: Curso) {
@@ -33,16 +36,32 @@ export class CursoService {
         'content-type': 'application/json',
         'encoding': 'UTF-8'
       })
-    });
+    }).pipe(
+      catchError(this.manejarError)
+    ).subscribe(console.log);
   }
 
   editarCurso(curso: Curso){
-    this.http.put(`${environment.api}/cursos/${curso.id}`, curso).subscribe(console.log);
+    this.http.put(`${environment.api}/cursos/${curso.id}`, curso).pipe(
+      catchError(this.manejarError)
+    ).subscribe(console.log);
   }
 
   eliminarCurso(id: number){
-    this.http.delete<Curso>(`${environment.api}/cursos/${id}`).subscribe(console.log);
-    alert('Registro eliminado');
+    this.http.delete<Curso>(`${environment.api}/cursos/${id}`).pipe(
+      catchError(this.manejarError)
+    ).subscribe(console.log);
+    alert("Curso eliminado");
+  }
+
+  private manejarError(error: HttpErrorResponse){
+    if(error.error instanceof ErrorEvent){
+      console.warn('Error del lado del cliente', error.error.message);
+    }else{
+      console.warn('Error del lado del servidor', error.error.message);
+    }
+
+    return throwError(() => new Error('Error en la comunicacion HTTP'));
   }
 }
 

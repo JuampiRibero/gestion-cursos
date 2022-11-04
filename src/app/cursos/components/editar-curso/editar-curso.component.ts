@@ -8,6 +8,7 @@ import {
 import { ActivatedRoute, Router } from '@angular/router';
 import { Curso } from 'src/app/models/curso';
 import { CursoService } from '../../services/curso.service';
+import { AlumnoService } from '../../../services/alumno.service';
 
 @Component({
   selector: 'app-editar-curso',
@@ -17,10 +18,10 @@ import { CursoService } from '../../services/curso.service';
 export class EditarCursoComponent implements OnInit {
   formularioCurso!: FormGroup;
   curso!: Curso;
-  alumnoService: any;
 
   constructor(
     private cursoService: CursoService,
+    private alumnoService: AlumnoService,
     private router: Router,
     private fb: FormBuilder,
     private activatedRoute: ActivatedRoute
@@ -66,6 +67,8 @@ export class EditarCursoComponent implements OnInit {
     };
 
     this.cursoService.editarCurso(c);
+
+    alert(`Curso editado`);
 
     this.router.navigate(['cursos/listar']);
   }
