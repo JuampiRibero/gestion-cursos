@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 
 import { AutenticacionGuard } from './autenticacion.guard';
 
-describe('AutenticacionGuard', () => {
+describe('Puebas Unitarias de AutenticacionGuard', () => {
   let guard: AutenticacionGuard;
 
   beforeEach(() => {
@@ -10,7 +10,7 @@ describe('AutenticacionGuard', () => {
     guard = TestBed.inject(AutenticacionGuard);
   });
 
-  it('should be created', () => {
+  it('Se crea AutenticacionGuard', () => {
     expect(guard).toBeTruthy();
   });
 });

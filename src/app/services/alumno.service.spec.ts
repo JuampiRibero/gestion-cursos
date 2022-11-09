@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 
 import { AlumnoService } from './alumno.service';
 
-describe('AlumnoService', () => {
+describe('Puebas Unitarias de AlumnoService', () => {
   let service: AlumnoService;
 
   beforeEach(() => {
@@ -10,7 +10,7 @@ describe('AlumnoService', () => {
     service = TestBed.inject(AlumnoService);
   });
 
-  it('should be created', () => {
+  it('Se crea AlumnoService', () => {
     expect(service).toBeTruthy();
   });
 });

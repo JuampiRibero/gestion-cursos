@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TablaAlumnosComponent } from './tabla-alumnos.component';
 
-describe('TablaAlumnosComponent', () => {
+describe('Puebas Unitarias de TablaAlumnosComponent', () => {
   let component: TablaAlumnosComponent;
   let fixture: ComponentFixture<TablaAlumnosComponent>;
 
@@ -17,7 +17,7 @@ describe('TablaAlumnosComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('Se crea TablaAlumnosComponent', () => {
     expect(component).toBeTruthy();
   });
 });

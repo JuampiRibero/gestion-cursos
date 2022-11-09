@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { InicioComponent } from './inicio.component';
 
-describe('InicioComponent', () => {
+describe('Puebas Unitarias de InicioComponent', () => {
   let component: InicioComponent;
   let fixture: ComponentFixture<InicioComponent>;
 
@@ -17,7 +17,7 @@ describe('InicioComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('Se crea InicioComponent', () => {
     expect(component).toBeTruthy();
   });
 });

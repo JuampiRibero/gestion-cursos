@@ -4,7 +4,7 @@ import { BehaviorSubject, catchError, filter, map, Observable, Subject, throwErr
 import { environment } from 'src/environments/environment';
 import { Curso } from '../../models/curso';
 
-@Injectable()
+@Injectable({ providedIn: 'any' })
 export class CursoService {
   constructor(private http: HttpClient) {}
 

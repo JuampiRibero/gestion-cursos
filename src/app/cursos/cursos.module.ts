@@ -12,6 +12,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CursoService } from './services/curso.service';
 import { SharedModule } from '../shared/shared.module';
 import { DetalleCursoComponent } from './components/detalle-curso/detalle-curso.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { DetalleCursoComponent } from './components/detalle-curso/detalle-curso.
     CursosRoutingModule,
     SharedModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [
     CursoService

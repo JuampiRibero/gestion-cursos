@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 
 import { AdminGuard } from './admin.guard';
 
-describe('AdminGuard', () => {
+describe('Puebas Unitarias de AdminGuard', () => {
   let guard: AdminGuard;
 
   beforeEach(() => {
@@ -10,7 +10,7 @@ describe('AdminGuard', () => {
     guard = TestBed.inject(AdminGuard);
   });
 
-  it('should be created', () => {
+  it('Se crea AdminGuard', () => {
     expect(guard).toBeTruthy();
   });
 });

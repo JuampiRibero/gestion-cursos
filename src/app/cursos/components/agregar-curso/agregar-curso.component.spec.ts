@@ -1,14 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AgregarCursoComponent } from './agregar-curso.component';
+import { AppModule } from '../../../app.module';
 
-describe('AgregarCursoComponent', () => {
+describe('Puebas Unitarias de AgregarCursoComponent', () => {
   let component: AgregarCursoComponent;
   let fixture: ComponentFixture<AgregarCursoComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AgregarCursoComponent ]
+      declarations: [ AgregarCursoComponent ],
+      imports: [ AppModule ],
+      providers: []
     })
     .compileComponents();
 
@@ -17,7 +20,7 @@ describe('AgregarCursoComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('Se crea AgregarCursoComponent', () => {
     expect(component).toBeTruthy();
   });
 });

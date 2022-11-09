@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ContactoComponent } from './contacto.component';
 
-describe('ContactoComponent', () => {
+describe('Puebas Unitarias de ContactoComponent', () => {
   let component: ContactoComponent;
   let fixture: ComponentFixture<ContactoComponent>;
 
@@ -17,7 +17,7 @@ describe('ContactoComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('Se crea ContactoComponent', () => {
     expect(component).toBeTruthy();
   });
 });

@@ -8,7 +8,6 @@ import { BooleanATextoPipe } from './pipes/boolean-a-texto.pipe';
 import { BooleanEstiloDirective } from './directives/boolean-estilo.directive';
 import { FiltroCursosPipe } from './pipes/filtro-cursos.pipe';
 import { TablaAlumnosComponent } from './components/tabla-alumnos/tabla-alumnos.component';
-import { FormAlumnoComponent } from './components/form-alumno/form-alumno.component';
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 
@@ -18,8 +17,7 @@ import { SharedModule } from './shared/shared.module';
     BooleanATextoPipe,
     BooleanEstiloDirective,
     FiltroCursosPipe,
-    TablaAlumnosComponent,
-    FormAlumnoComponent    
+    TablaAlumnosComponent
   ],
   imports: [
     BrowserModule,

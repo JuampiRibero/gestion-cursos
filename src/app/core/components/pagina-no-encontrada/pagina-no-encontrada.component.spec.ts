@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PaginaNoEncontradaComponent } from './pagina-no-encontrada.component';
 
-describe('PaginaNoEncontradaComponent', () => {
+describe('Puebas Unitarias de PaginaNoEncontradaComponent', () => {
   let component: PaginaNoEncontradaComponent;
   let fixture: ComponentFixture<PaginaNoEncontradaComponent>;
 
@@ -17,7 +17,7 @@ describe('PaginaNoEncontradaComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('Se crea PaginaNoEncontradaComponent', () => {
     expect(component).toBeTruthy();
   });
 });
