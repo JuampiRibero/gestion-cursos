@@ -12,8 +12,8 @@ const routes: Routes = [
   { path: 'autenticacion', loadChildren: () => import('./autenticacion/autenticacion.module').then((m) => m.AutenticacionModule)},
   { path: 'alumnos', children: [
     { path: 'listar', component: TablaAlumnosComponent },
-  ]},
-  { path: 'contacto', component: ContactoComponent },
+  ], canActivate: [AutenticacionGuard] },
+  { path: 'contacto', component: ContactoComponent, canActivate: [AutenticacionGuard]  },
   { path: '', redirectTo: 'inicio', pathMatch: 'full' },
   { path: '**', component: PaginaNoEncontradaComponent }
 ];

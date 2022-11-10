@@ -1,5 +1,6 @@
 import { Component, Inject, OnInit, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Sesion } from 'src/app/models/sesion';
 import { SesionService } from '../../services/sesion.service';
@@ -14,9 +15,13 @@ export class MenuComponent implements OnInit {
   isExpanded = false;
   sesion$!: Observable<Sesion>;
 
-  constructor(private sesionService: SesionService) {}
+  constructor(private sesionService: SesionService, private router: Router) {}
 
   ngOnInit(): void {
     this.sesion$ = this.sesionService.obtenerSesion();
+  }
+
+  logout() {
+    this.sesionService.logout();
   }
 }

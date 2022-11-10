@@ -1,7 +1,7 @@
 <div class="container my-3">
   <h1 class="text-decoration-underline">Agregar Curso</h1>
   <form [formGroup]="formularioCurso" (ngSubmit)="agregarCurso()">
-    <div class="row">
+    <div class="row" id="cursos">
       <div class="col-md-4">
         <mat-form-field appearance="outline" class="fill">
           <mat-label>Nombre:</mat-label>
@@ -12,7 +12,7 @@
           />
           <mat-hint>
             <p
-              *ngIf="formularioCurso.get('nombre')?.touched && formularioCurso.get('nombre')?.errors?.['required']"
+              *ngIf="formularioCurso.get('nombre')?.touched"
             >
               El nombre es requerido
             </p>
@@ -29,7 +29,7 @@
           />
           <mat-hint>
             <p
-              *ngIf="formularioCurso.get('comision')?.touched && formularioCurso.get('comision')?.errors?.['required']"
+              *ngIf="formularioCurso.get('comision')?.touched"
             >
               La comision es requerida
             </p>
@@ -46,7 +46,7 @@
           />
           <mat-hint>
             <p
-              *ngIf="formularioCurso.get('profesor')?.touched && formularioCurso.get('profesor')?.errors?.['required']"
+              *ngIf="formularioCurso.get('profesor')?.touched"
             >
               El profesor es requerido
             </p>
@@ -63,7 +63,7 @@
           />
           <mat-hint>
             <p
-              *ngIf="formularioCurso.get('fechaInicio')?.touched && formularioCurso.get('fechaInicio')?.errors?.['required']"
+              *ngIf="formularioCurso.get('fechaInicio')?.touched"
             >
               DD/MM/YYYY
             </p>
@@ -85,7 +85,7 @@
           />
           <mat-hint>
             <p
-              *ngIf="formularioCurso.get('fechaFin')?.touched && formularioCurso.get('fechaFin')?.errors?.['required']"
+              *ngIf="formularioCurso.get('fechaFin')?.touched"
             >
               DD/MM/YYYY
             </p>
@@ -107,6 +107,8 @@
         type="submit"
         color="primary"
         class="col-md-2 mt-2"
+        [disabled]="formularioCurso.invalid"
+        id="btnAgregar"
       >
         Agregar Curso
       </button>

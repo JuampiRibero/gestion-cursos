@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {
-  FormBuilder,
   FormControl,
   FormGroup,
   Validators,
@@ -18,8 +17,8 @@ import { AlumnoService } from '../../../services/alumno.service';
 export class AgregarCursoComponent implements OnInit {
   formularioCurso: FormGroup;
 
-  constructor(private cursoService: CursoService, private alumnoService: AlumnoService, private router: Router, private fb: FormBuilder) {
-    this.formularioCurso = fb.group({
+  constructor(private cursoService: CursoService, private alumnoService: AlumnoService, private router: Router) {
+    this.formularioCurso = new FormGroup({
       nombre: new FormControl('', [Validators.required]),
       comision: new FormControl('', [Validators.required]),
       profesor: new FormControl('', [Validators.required]),
@@ -45,7 +44,7 @@ export class AgregarCursoComponent implements OnInit {
       alumnos: this.alumnoService.obtenerAlumnosObservable(),
     };
     console.log(curso);
-    this.formularioCurso.addControl('control1', new FormControl('', []));
+    // this.formularioCurso.addControl('control1', new FormControl('', []));
     this.cursoService.agregarCurso(curso);
     this.router.navigate(['cursos/listar']);
   }

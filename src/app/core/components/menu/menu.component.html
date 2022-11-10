@@ -30,6 +30,9 @@
         <mat-list-item *ngIf="isExpanded">
           <a routerLink="contacto">Contacto</a>
         </mat-list-item>
+        <mat-list-item *ngIf="isExpanded">
+          <a routerLink="autenticacion/login" (click)="logout()">Logout</a>
+        </mat-list-item>
       </mat-nav-list>
     </mat-sidenav>
     <div class="vh-100"> 
