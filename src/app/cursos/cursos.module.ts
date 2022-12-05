@@ -13,6 +13,10 @@ import { CursoService } from './services/curso.service';
 import { SharedModule } from '../shared/shared.module';
 import { DetalleCursoComponent } from './components/detalle-curso/detalle-curso.component';
 import { HttpClientModule } from '@angular/common/http';
+// import { EffectsModule } from '@ngrx/effects';
+// import { CursosEffects } from '../cursos.effects';
+import { StoreModule } from '@ngrx/store';
+import { cursosFeatureKey, reducer } from './state/cursos.reducer';
 
 @NgModule({
   declarations: [
@@ -30,7 +34,9 @@ import { HttpClientModule } from '@angular/common/http';
     SharedModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    StoreModule.forFeature(cursosFeatureKey, reducer),
+    // EffectsModule.forFeature([CursosEffects])
   ],
   providers: [
     CursoService

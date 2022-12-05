@@ -8,6 +8,10 @@ import { MenuComponent } from './components/menu/menu.component';
 import { SesionService } from './services/sesion.service';
 import { MaterialModule } from '../material.module';
 import { AppRoutingModule } from '../app-routing.module';
+// import { EffectsModule } from '@ngrx/effects';
+// import { SesionEffects } from './sesion.effects';
+import { StoreModule } from '@ngrx/store';
+import { sesionFeatureKey, reducer } from './state/sesion.reducer';
 
 @NgModule({
   declarations: [
@@ -20,7 +24,9 @@ import { AppRoutingModule } from '../app-routing.module';
   imports: [
     CommonModule,
     MaterialModule,
-    AppRoutingModule
+    AppRoutingModule,
+    StoreModule.forFeature(sesionFeatureKey, reducer),
+    // EffectsModule.forFeature([SesionEffects])
   ],
   providers: [
     SesionService
