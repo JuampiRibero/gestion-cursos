@@ -27,21 +27,13 @@ export class TablaAlumnosComponent implements OnInit {
   constructor(
     private alumnoService: AlumnoService
   ) {
-    //Paso 1
-    console.log('Paso 1');
     //Paso 2
     this.suscripcion = this.alumnoService.obtenerAlumnosObservable().subscribe({
       next: (alumnos: Alumno[]) => {
         this.alumnos = alumnos;
-        console.log('Paso 2: desde el Observable', alumnos);
-      },
-      error: (error) => {
-        console.error(error);
       }
     });
     this.alumnos$ = this.alumnoService.obtenerAlumnosObservable();
-    //Paso 3
-    console.log('Paso 3');
   }
 
   ngOnInit(): void {

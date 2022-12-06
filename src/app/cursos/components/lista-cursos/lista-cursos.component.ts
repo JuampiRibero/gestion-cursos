@@ -40,7 +40,6 @@ export class ListaCursosComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    console.log('El componente lista-cursos se está destruyendo')
     this.suscripcionCursos.unsubscribe();
   }
 

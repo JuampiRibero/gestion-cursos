@@ -14,15 +14,18 @@
         <mat-list-item *ngIf="isExpanded">
           <a routerLink="">Inicio</a>
         </mat-list-item>
-        <mat-list-item *ngIf="isExpanded">
+        <!-- <mat-list-item *ngIf="isExpanded">
           <a routerLink="autenticacion/login">Login</a>
-        </mat-list-item>
+        </mat-list-item> -->
         <mat-list-item *ngIf="isExpanded">
           <a routerLink="cursos/listar">Lista Cursos</a>
         </mat-list-item>
         <mat-list-item *ngIf="isExpanded">
           <!-- <a routerLink="cursos/agregar" *ngIf="sesion.usuarioActivo?.admin">Agregar Curso</a> -->
           <a routerLink="cursos/agregar">Agregar Curso</a>
+        </mat-list-item>
+        <mat-list-item *ngIf="isExpanded">
+          <a routerLink="inscripciones/lista">Inscripciones</a>
         </mat-list-item>
         <mat-list-item *ngIf="isExpanded">
           <a routerLink="alumnos/listar">Alumnos</a>

@@ -43,7 +43,6 @@ export class AgregarCursoComponent implements OnInit {
       imagen: 'https://img.freepik.com/foto-gratis/encendido-computadora-portatil-gris_400718-47.jpg?w=1060&t=st=1663708656~exp=1663709256~hmac=41ed7dd4523308f9f9c145e5fe12aecfbd21619ad28f2c1988b896458dcda35a',
       alumnos: this.alumnoService.obtenerAlumnosObservable(),
     };
-    console.log(curso);
     // this.formularioCurso.addControl('control1', new FormControl('', []));
     this.cursoService.agregarCurso(curso);
     this.router.navigate(['cursos/listar']);

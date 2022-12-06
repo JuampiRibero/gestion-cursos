@@ -29,7 +29,6 @@ export class EditarCursoComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe((parametros) => {
-      console.log(parametros);
 
       this.curso = {
         id: parseInt(parametros.get('id') || '0'),

@@ -13,6 +13,7 @@ const routes: Routes = [
   { path: 'alumnos', children: [
     { path: 'listar', component: TablaAlumnosComponent },
   ], canActivate: [AutenticacionGuard] },
+  { path: 'inscripciones', loadChildren: () => import('./inscripciones/inscripciones.module').then((m) => m.InscripcionesModule), canActivate: [AutenticacionGuard] },
   { path: 'contacto', component: ContactoComponent, canActivate: [AutenticacionGuard]  },
   { path: '', redirectTo: 'inicio', pathMatch: 'full' },
   { path: '**', component: PaginaNoEncontradaComponent }

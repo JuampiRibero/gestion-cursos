@@ -38,19 +38,19 @@ export class CursoService {
       })
     }).pipe(
       catchError(this.manejarError)
-    ).subscribe(console.log);
+    ).subscribe();
   }
 
   editarCurso(curso: Curso){
     this.http.put(`${environment.api}/cursos/${curso.id}`, curso).pipe(
       catchError(this.manejarError)
-    ).subscribe(console.log);
+    ).subscribe();
   }
 
   eliminarCurso(id: number){
     this.http.delete<Curso>(`${environment.api}/cursos/${id}`).pipe(
       catchError(this.manejarError)
-    ).subscribe(console.log);
+    ).subscribe();
     alert("Curso eliminado");
   }
 
