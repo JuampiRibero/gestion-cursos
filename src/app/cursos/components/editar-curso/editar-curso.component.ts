@@ -9,6 +9,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Curso } from 'src/app/models/curso';
 import { CursoService } from '../../services/curso.service';
 import { AlumnoService } from '../../../services/alumno.service';
+import { Store } from '@ngrx/store';
+import { CursoState } from 'src/app/models/curso.state';
+import { editarCurso } from '../../state/cursos.actions';
 
 @Component({
   selector: 'app-editar-curso',
@@ -24,7 +27,8 @@ export class EditarCursoComponent implements OnInit {
     private alumnoService: AlumnoService,
     private router: Router,
     private fb: FormBuilder,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private store: Store<CursoState>
   ) {}
 
   ngOnInit(): void {
@@ -53,7 +57,7 @@ export class EditarCursoComponent implements OnInit {
   }
 
   editarCurso() {
-    let c: Curso = {
+    let curso: Curso = {
       id: this.curso.id,
       nombre: this.formularioCurso.value.nombre,
       comision: this.formularioCurso.value.comision,
@@ -65,7 +69,7 @@ export class EditarCursoComponent implements OnInit {
       alumnos: this.alumnoService.obtenerAlumnosObservable(),
     };
 
-    this.cursoService.editarCurso(c);
+    this.store.dispatch(editarCurso({curso}));
 
     alert(`Curso editado`);
 
